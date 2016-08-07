@@ -1,0 +1,60 @@
+After years of observations you have found out that
+if it rains on a given day, there is a 60% chance
+that it will rain on the next day too.
+If it is not raining, the chance of rain on the next day in only 25%.
+
+The weather forecast for Friday predicts
+the chance of rain is 75%.
+
+What is the probability that
+*at least one day* of the weekend
+will have *no rain*?
+
+----------------------------------------------------------------
+
+A = Friday
+B = Saturday
+C = Sunday
+
+# rain on Friday
+P(A)    = 0.75
+
+# no rain on Friday
+P(A')   = 1 - P(A)
+        = 0.25
+
+P(B|A)  = 0.60  # rain on Saturday given the event of rain on Friday
+P(B|A') = 0.25  # rain on Saturday given the event of no rain on Friday
+
+P(C|B)  = 0.60  # rain on Sunday given the event of rain on Saturday
+P(C|B') = 0.25  # rain on Sunday given the event of no rain on Saturday
+
+P(B)   = P(B|A) P(A) + P(B|A') P(A')
+       = 0.60 * 0.75 + 0.25 * 0.25
+       = 0.5125
+
+P(B')  = 1 - P(B)
+       = 0.4875
+
+P(C)   = P(C|B) P(B) + P(C|B') P(B')
+       = 0.60 * 0.5125 + 0.25 * 0.4875
+       = 0.429375
+
+P(C')  = 1 - P(C)
+       = 0.570625
+
+----------------------------------------------------------------
+
+# Bayes' theorem
+          P(C|B) P(B)
+P(B|C) = -------------
+              P(C)
+
+          0.60 * 0.5125     164
+P(B|C) = --------------- = -----
+             0.429375       229
+
+                                                 164         123     277
+1 - P(B and C) = 1 - P(B|C) P(C) = 1 - 0.429375 ----- = 1 - ----- = -----
+                                                 229         400     400
+
